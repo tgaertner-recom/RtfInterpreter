@@ -45,6 +45,11 @@ namespace Itenso.Rtf.Interpreter.Interpreter
 		{
 			get
 			{
+				if (defaultFontId == null)
+				{
+					return null;
+				}
+
 				IRtfFont defaultFont = fontTable[ defaultFontId ];
 				if ( defaultFont != null )
 				{
@@ -132,7 +137,7 @@ namespace Itenso.Rtf.Interpreter.Interpreter
 		{
 			get
 			{
-				if ( currentTextFormat == null )
+				if ( currentTextFormat == null && DefaultFont != null)
 				{
 					// set via property to ensure it will get added to the unique map
 					WritableCurrentTextFormat = new RtfTextFormat( DefaultFont, RtfSpec.DefaultFontSize );
@@ -190,7 +195,7 @@ namespace Itenso.Rtf.Interpreter.Interpreter
 		{
 			state = RtfInterpreterState.Init;
 			rtfVersion = RtfSpec.RtfVersion1;
-			defaultFontId = "f0";
+			defaultFontId = null;
 			fontTable.Clear();
 			colorTable.Clear();
 			generator = null;
