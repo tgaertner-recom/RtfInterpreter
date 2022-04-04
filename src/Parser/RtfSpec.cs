@@ -11,10 +11,40 @@ using System.Text;
 
 namespace Itenso.Rtf.Parser
 {
+	// https://interoperability.blob.core.windows.net/files/Archive_References/%5bMSFT-RTF%5d.pdf
+	// https://manuals.swissmains.com/download/attachments/1376332/Word2007RTFSpec9.pdf
 
 	// ------------------------------------------------------------------------
 	public static class RtfSpec
 	{
+		public static readonly string[] HeaderTags
+			= new[]
+			  {	
+				  //TagFontBidis,
+				  //TagFrom,
+				  TagDefaultFont,
+				  TagDefaultLang,
+				  TagFontTable,
+				  //TagFileTable,
+				  TagColorTable,
+				  TagStyleSheet,
+				  //TagStyleRestrictions,
+				  //TagListTables,
+				  //TagRevTable,
+				  //TagRsidTable,
+				  //TagMathProps,
+				  TagGenerator
+			  };
+
+		public static readonly string[] EncodingTags
+			= new[]
+			  {
+				  TagEncodingAnsi,
+				  TagEncodingMac,
+				  TagEncodingPc,
+				  TagEncodingPca,
+				  TagEncodingAnsiCodePage
+			  };
 
 		// --- rtf general ----
 		public const string TagRtf = "rtf";
@@ -41,6 +71,7 @@ namespace Itenso.Rtf.Parser
 		// --- font ----
 		public const string TagFontTable = "fonttbl";
 		public const string TagDefaultFont = "deff";
+		public const string TagDefaultLang = "deflang";
 		public const string TagFont = "f";
 		public const string TagFontKindNil = "fnil";
 		public const string TagFontKindRoman = "froman";

@@ -8,6 +8,7 @@
 // --------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using Itenso.Rtf.Parser;
 
 namespace Itenso.Rtf.Interpreter.Interpreter
@@ -127,17 +128,13 @@ namespace Itenso.Rtf.Interpreter.Interpreter
 		// ----------------------------------------------------------------------
 		void IRtfElementVisitor.VisitTag( IRtfTag tag )
 		{
-			if ( Context.State != RtfInterpreterState.InDocument )
+			if ( Context.State == RtfInterpreterState.InHeader )
 			{
-				if ( Context.FontTable.Count > 0 )
+				// switch to content when the first non header tag is visited
+				if ( !RtfSpec.HeaderTags.Contains( tag.Name ) 
+				     && !RtfSpec.EncodingTags.Contains( tag.Name ) )
 				{
-					// somewhat of a hack to detect state change from header to in-document for
-					// rtf-docs which do neither have a generator group nor encapsulate the
-					// actual document content in a group.
-					if ( Context.ColorTable.Count > 0 || RtfSpec.TagViewKind.Equals( tag.Name ) )
-					{
-						Context.State = RtfInterpreterState.InDocument;
-					}
+					Context.State = RtfInterpreterState.InDocument;
 				}
 			}
 
