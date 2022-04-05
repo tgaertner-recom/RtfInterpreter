@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Itenso.Rtf</id>
+    <version>2022.04.0</version>
+    <title>Itenso.Rtf</title>
+    <authors>Itenso GmbH (CH), Jani Giannoudis; Recom GmbH (DE), Tobias Gaertner</authors>
+    <owners>Recom GmbH</owners>
+    <projectUrl>https://github.com/recomgmbh/rtfinterpreter</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A RTF parsing and interpreting algorithm.</description>
+    <copyright>(c) 2004-2013 by Jani Giannoudis, Switzerland; 2022 Recom GmbH</copyright>
+    <tags></tags>
+    <license type="expression">MIT</license>
+    <iconUrl>https://avatars3.githubusercontent.com/u/32799238?s=128</iconUrl>
+    <icon>icon.jpg</icon>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="icon.jpg" target="" />
+
+    <!-- lib -->
+    <!-- <file src="..\src\bin\Release\Itenso.Rtf.dll" target="lib\netstandard"/> -->
+
+    <!-- net45 -->
+    <file src="..\src\bin\Release\Itenso.Rtf.dll" target="lib\net45" />
+
+  </files>
+</package>
